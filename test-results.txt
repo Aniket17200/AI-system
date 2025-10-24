@@ -1,0 +1,288 @@
+
+Starting AI Chatbot Tests...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+   AI CHATBOT - COMPREHENSIVE QUESTION TEST
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Testing User: 68c812b0afc4892c1f8128e3
+API Base: http://localhost:5000/api
+
+Γ£à Server is running
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôé MARKETING DATA
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "What is my ROAS in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1716ms
+   ≡ƒÆ¼ Answer: Your ROAS in the last 30 days is 19.51x.
+   ≡ƒôè Tokens Used: 336
+
+2. Question: "What is my ROAS in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2313ms
+   ≡ƒÆ¼ Answer: The ROAS for the period from 2025-09-22 to 2025-10-23 is 19.51x.
+   ≡ƒôè Tokens Used: 349
+
+3. Question: "What is my ROAS in last 90 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2524ms
+   ≡ƒÆ¼ Answer: The ROAS for the period from 2025-09-22 to 2025-10-23 is 19.51x. Data for the entire last 90 days is not provided.
+   ≡ƒôè Tokens Used: 361
+
+4. Question: "What is my cost per purchase in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1778ms
+   ≡ƒÆ¼ Answer: Your cost per purchase in the last 30 days is Γé╣86.76. This is calculated by dividing the total ad spend (Γé╣41,299) by the total number of orders (476).
+   ≡ƒôè Tokens Used: 362
+
+5. Question: "What is my cost per sale in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1933ms
+   ≡ƒÆ¼ Answer: Your cost per sale for the period from 2025-09-22 to 2025-10-23 is Γé╣111.53. This is calculated by dividing the total ad spend (Γé╣41,299) by the number of orders (476).
+   ≡ƒôè Tokens Used: 374
+
+6. Question: "How much I spend on ads in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1411ms
+   ≡ƒÆ¼ Answer: You spent Γé╣41,299 on ads in the last 30 days.
+   ≡ƒôè Tokens Used: 336
+
+7. Question: "How much I spend on ads in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1718ms
+   ≡ƒÆ¼ Answer: The data provided only covers the period from 2025-09-22 to 2025-10-23, so I can't provide the ad spend for the last 60 days.
+   ≡ƒôè Tokens Used: 360
+
+8. Question: "What is my CTR in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1125ms
+   ≡ƒÆ¼ Answer: The Click-Through Rate (CTR) for the last 30 days is not available in the data provided.
+   ≡ƒôè Tokens Used: 342
+
+9. Question: "What is my sales from Meta ads in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 3087ms
+   ≡ƒÆ¼ Answer: The total sales revenue from Meta ads is not specified in the provided data.
+   ≡ƒôè Tokens Used: 337
+
+10. Question: "What is my CPM in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2399ms
+   ≡ƒÆ¼ Answer: The data provided does not include the specific metric for Cost Per Thousand Impressions (CPM) for the last 30 days.
+   ≡ƒôè Tokens Used: 346
+
+11. Question: "What is my CPC in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2053ms
+   ≡ƒÆ¼ Answer: The Cost Per Click (CPC) cannot be calculated with the provided data. The information necessary to calculate CPC, such as the number of clicks, is not available.
+   ≡ƒôè Tokens Used: 353
+
+12. Question: "What is my POAS in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1817ms
+   ≡ƒÆ¼ Answer: Your POAS in the last 30 days is 10.62x.
+   ≡ƒôè Tokens Used: 336
+
+
+≡ƒôé WEBSITE/SALES DATA
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "What is my total sales in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1464ms
+   ≡ƒÆ¼ Answer: Your total sales in the last 30 days were Γé╣8,05,912.
+   ≡ƒôè Tokens Used: 337
+
+2. Question: "What is my total sales in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2167ms
+   ≡ƒÆ¼ Answer: The data provided only covers the period from 2025-09-22 to 2025-10-23. For this period, your total sales were Γé╣8,05,912. Data for the entire last 60 days is not available.
+   ≡ƒôè Tokens Used: 371
+
+3. Question: "What is my orders in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1051ms
+   ≡ƒÆ¼ Answer: Your orders in the last 30 days are 476.
+   ≡ƒôè Tokens Used: 331
+
+4. Question: "What is my orders in last 90 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2044ms
+   ≡ƒÆ¼ Answer: The data provided only covers the period from 2025-09-22 to 2025-10-23, and it shows that there were 476 orders during this time. Data for the last 90 days is not available.
+   ≡ƒôè Tokens Used: 367
+
+5. Question: "What is my returning customer rate in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1444ms
+   ≡ƒÆ¼ Answer: Your returning customer rate in the last 30 days is 7.98%.
+   ≡ƒôè Tokens Used: 337
+
+6. Question: "What is my average order value in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1714ms
+   ≡ƒÆ¼ Answer: Your average order value (AOV) in the last 30 days is Γé╣1,693.09.
+   ≡ƒôè Tokens Used: 343
+
+7. Question: "What is my average order value in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1987ms
+   ≡ƒÆ¼ Answer: Your average order value (AOV) for the period from 2025-09-22 to 2025-10-23 was Γé╣1,693.09.
+   ≡ƒôè Tokens Used: 356
+
+8. Question: "What is my best selling products in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1762ms
+   ≡ƒÆ¼ Answer: The specific details about your best-selling products in the last 30 days are not available in the data provided. Please check your sales reports or inventory system for this information.
+   ≡ƒôè Tokens Used: 355
+
+9. Question: "What is my least selling products in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1423ms
+   ≡ƒÆ¼ Answer: Data on specific product sales is unavailable. Please provide detailed sales data for each product to receive insights on the least selling products.
+   ≡ƒôè Tokens Used: 346
+
+
+≡ƒôé SHIPPING DATA
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "What is my delivery rate in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1578ms
+   ≡ƒÆ¼ Answer: The delivery rate is not directly provided in the metrics available. Please provide more specific information or clarify the context if you're referring to a different metric.
+   ≡ƒôè Tokens Used: 350
+
+2. Question: "What is my RTO rate in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1767ms
+   ≡ƒÆ¼ Answer: The RTO (Return to Origin) rate is not provided in the data for the period 2025-09-22 to 2025-10-23.
+   ≡ƒôè Tokens Used: 355
+
+3. Question: "What is my shipments in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1659ms
+   ≡ƒÆ¼ Answer: Your shipments cost was Γé╣11,952 in the last 30 days.
+   ≡ƒôè Tokens Used: 334
+
+4. Question: "What is my in-transit orders?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2197ms
+   ≡ƒÆ¼ Answer: The data provided does not include the number of in-transit orders for the period from 2025-09-22 to 2025-10-23.
+   ≡ƒôè Tokens Used: 350
+
+5. Question: "What is my NDR pending orders in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1864ms
+   ≡ƒÆ¼ Answer: The data provided does not include information on NDR (Non-Delivery Reports) pending orders for the last 30 days.
+   ≡ƒôè Tokens Used: 347
+
+6. Question: "What is my shipping spend in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2098ms
+   ≡ƒÆ¼ Answer: Your shipping spend in the last 30 days is Γé╣11,952.
+   ≡ƒôè Tokens Used: 335
+
+7. Question: "What is my average shipping cost in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1962ms
+   ≡ƒÆ¼ Answer: Your average shipping cost in the last 30 days is Γé╣25.32.
+   ≡ƒôè Tokens Used: 337
+
+8. Question: "How much COD amount I received in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2622ms
+   ≡ƒÆ¼ Answer: The data provided does not specify the amount received through Cash on Delivery (COD) transactions for the last 30 days.
+   ≡ƒôè Tokens Used: 345
+
+
+≡ƒôé FINANCIAL DATA
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "What is my net profit and net margin in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1555ms
+   ≡ƒÆ¼ Answer: Your net profit in the last 30 days is Γé╣4,38,665, and your net margin is 54.43%.
+   ≡ƒôè Tokens Used: 350
+
+2. Question: "What is my net profit in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2057ms
+   ≡ƒÆ¼ Answer: The net profit for the period from 2025-09-22 to 2025-10-23 is Γé╣4,38,665. Data for the entire last 60 days is not provided.
+   ≡ƒôè Tokens Used: 362
+
+3. Question: "What is my gross profit and gross margin in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1890ms
+   ≡ƒÆ¼ Answer: Your gross profit in the last 30 days is Γé╣4,91,916, and your gross margin is 61.04%.
+   ≡ƒôè Tokens Used: 350
+
+4. Question: "What is my gross profit in last 90 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1689ms
+   ≡ƒÆ¼ Answer: Your gross profit for the period from 2025-09-22 to 2025-10-23 is Γé╣4,91,916.
+   ≡ƒôè Tokens Used: 350
+
+5. Question: "What is my POAS in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1918ms
+   ≡ƒÆ¼ Answer: Your POAS in the last 30 days is 10.62x.
+   ≡ƒôè Tokens Used: 336
+
+
+≡ƒôé COMPARISONS & TRENDS
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "Compare my revenue in last 30 days vs last 60 days"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 3224ms
+   ≡ƒÆ¼ Answer: I only have data for the period from 2025-09-22 to 2025-10-23. For this 30-day period, your revenue was Γé╣8,05,912. I don't have the revenue data for the previous 30 days to make a comparison.
+   ≡ƒôè Tokens Used: 381
+
+2. Question: "Show me my revenue trend"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1806ms
+   ≡ƒÆ¼ Answer: I don't have historical data to show a trend in your revenue. I can only provide information for the period from 2025-09-22 to 2025-10-23, during which your revenue was Γé╣8,05,912.
+   ≡ƒôè Tokens Used: 365
+
+3. Question: "What is my growth rate?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1523ms
+   ≡ƒÆ¼ Answer: To calculate the growth rate, I need the previous period's data for comparison. Without this, I cannot provide your growth rate.
+   ≡ƒôè Tokens Used: 341
+
+4. Question: "Give me a complete business overview for last 30 days"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 8644ms
+   ≡ƒÆ¼ Answer: For the period from 2025-09-22 to 2025-10-23, your e-commerce store achieved the following metrics:
+
+- **Sales**: You received a total of 476 orders, generating revenue of Γé╣8,05,912. The average order value (AOV) was Γé╣1693.09.
+- **Profit**: Your gross profit was Γé╣4,91,916, representing a gross margin of 61.04%. The net profit amounted to Γé╣4,38,665, indicating a net margin of 54.43%.
+- **Marketing**: The advertising spend was Γé╣41,299. This resulted in a return on ad spend (ROAS) of 19.51x and a profit on ad spend (POAS) of 10.62x.
+- **Customers**: A total of 462 customers shopped at your store, with 425 being new customers and 37 returning customers.
+- **Shipping**: The shipping cost for this period was Γé╣11,952.
+
+**Actionable Insight**: Given the high ROAS of 19.51x and a significant portion of new customers (425 out of 462), consider reallocating more budget towards your marketing efforts to further increase customer acquisition while maintaining or improving the efficiency of your ad spend.
+   ≡ƒôè Tokens Used: 582
+
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+   TEST SUMMARY
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+   Total Questions: 38
+   Γ£à Passed: 38
+   Γ¥î Failed: 0
+   Success Rate: 100.00%
+
+   ΓÅ▒∩╕Å  Average Response Time: 2079ms
+   ≡ƒôè Average Tokens: 355
+   ≡ƒÆ░ Estimated Cost: $0.2701
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+≡ƒÄë ALL TESTS PASSED! AI Chatbot is production-ready!
+

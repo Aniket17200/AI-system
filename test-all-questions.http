@@ -1,0 +1,169 @@
+### Marketing Data Questions
+
+### 1. ROAS in last 30 days
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my ROAS in last 30 days?"
+}
+
+### 2. ROAS in last 60 days
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my ROAS in last 60 days?"
+}
+
+### 3. Cost per purchase
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my cost per purchase in last 30 days?"
+}
+
+### 4. Ad spend
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "How much I spend on ads in last 30 days?"
+}
+
+### 5. CTR
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my CTR in last 30 days?"
+}
+
+### 6. CPM
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my CPM in last 30 days?"
+}
+
+### Website Data Questions
+
+### 7. Total sales
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my total sales in last 30 days?"
+}
+
+### 8. Orders
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my orders in last 30 days?"
+}
+
+### 9. Returning customer rate
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my returning customer rate in last 30 days?"
+}
+
+### 10. Average order value
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my average order value in last 30 days?"
+}
+
+### Shipping Data Questions
+
+### 11. Delivery Rate
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my delivery rate in last 30 days?"
+}
+
+### 12. RTO rate
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my RTO rate in last 30 days?"
+}
+
+### 13. Shipping spend
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my shipping spend in last 30 days?"
+}
+
+### Financial Data Questions
+
+### 14. Net Profit and Margin
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my net profit and net margin in last 30 days?"
+}
+
+### 15. Gross Profit and Margin
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my gross profit and gross margin in last 30 days?"
+}
+
+### 16. POAS
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What is my POAS in last 30 days?"
+}
+
+### 17. Compare periods
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "Compare my revenue in last 30 days vs last 60 days"
+}
+
+### 18. Business overview
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "Give me a complete business overview for last 30 days"
+}

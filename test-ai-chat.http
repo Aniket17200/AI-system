@@ -1,0 +1,60 @@
+### Test AI Chat - Revenue Question
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What's my total revenue for the last 30 days?"
+}
+
+### Test AI Chat - Profit Analysis
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "How is my profit margin? Is it good?"
+}
+
+### Test AI Chat - Marketing Performance
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What's my ROAS and how can I improve it?"
+}
+
+### Test AI Chat - Customer Analysis
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "Tell me about my customer retention"
+}
+
+### Test AI Chat - Conversation with History
+POST http://localhost:5000/api/ai/chat
+Content-Type: application/json
+
+{
+  "userId": "68c812b0afc4892c1f8128e3",
+  "message": "What about last week?",
+  "conversationHistory": [
+    {
+      "role": "user",
+      "content": "What's my revenue?"
+    },
+    {
+      "role": "assistant",
+      "content": "Your total revenue for the last 30 days is ₹4,23,057."
+    }
+  ]
+}
+
+### Index User Metrics
+POST http://localhost:5000/api/ai/index/68c812b0afc4892c1f8128e3
+
+### Get Suggested Questions
+GET http://localhost:5000/api/ai/suggestions/68c812b0afc4892c1f8128e3

@@ -1,0 +1,82 @@
+### Health Check
+GET http://localhost:5000/
+
+### ========== USER MANAGEMENT ==========
+
+### 1. Create User with Shopify Credentials
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "shopifyStore": "e23104-8c.myshopify.com",
+  "shopifyAccessToken": "YOUR_SHOPIFY_ACCESS_TOKEN",
+  "metaAccessToken": "YOUR_META_TOKEN",
+  "metaAdAccountId": "YOUR_AD_ACCOUNT_ID",
+  "shiprocketEmail": "your@email.com",
+  "shiprocketPassword": "your_password",
+  "isActive": true
+}
+
+### 2. Get All Users
+GET http://localhost:5000/api/users
+
+### 3. Get Single User
+GET http://localhost:5000/api/users/USER_ID_HERE
+
+### 4. Update User
+PUT http://localhost:5000/api/users/USER_ID_HERE
+Content-Type: application/json
+
+{
+  "isActive": true,
+  "metaAccessToken": "NEW_TOKEN"
+}
+
+### ========== PRODUCT COSTS ==========
+
+### 5. Add Product Cost
+POST http://localhost:5000/api/product-costs
+Content-Type: application/json
+
+{
+  "userId": "USER_ID_HERE",
+  "shopifyProductId": "123456789",
+  "productName": "Sample Product",
+  "cost": 150
+}
+
+### 6. Get Product Costs for User
+GET http://localhost:5000/api/product-costs/USER_ID_HERE
+
+### 7. Delete Product Cost
+DELETE http://localhost:5000/api/product-costs/PRODUCT_COST_ID_HERE
+
+### ========== SYNC OPERATIONS ==========
+
+### 8. Manual Sync (Fetch Data Now)
+POST http://localhost:5000/api/sync/manual
+Content-Type: application/json
+
+{
+  "userId": "USER_ID_HERE",
+  "startDate": "2024-10-01",
+  "endDate": "2024-10-31"
+}
+
+### 9. Get Sync Jobs History
+GET http://localhost:5000/api/sync/jobs/USER_ID_HERE
+
+### 10. Get Specific Job Status
+GET http://localhost:5000/api/sync/status/JOB_ID_HERE
+
+### ========== METRICS ==========
+
+### 11. Get Daily Metrics
+GET http://localhost:5000/api/metrics?userId=USER_ID_HERE&startDate=2024-10-01&endDate=2024-10-31
+
+### 12. Get Summary (Last 30 Days)
+GET http://localhost:5000/api/metrics/summary/USER_ID_HERE?days=30
+
+### 13. Get Summary (Last 7 Days)
+GET http://localhost:5000/api/metrics/summary/USER_ID_HERE?days=7

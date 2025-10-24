@@ -1,0 +1,61 @@
+
+Starting AI Chatbot Tests...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+   AI CHATBOT - COMPREHENSIVE QUESTION TEST
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Testing User: 68c812b0afc4892c1f8128e3
+API Base: http://localhost:5000/api
+
+Γ£à Server is running
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+
+≡ƒôé MARKETING DATA
+ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü
+
+1. Question: "What is my ROAS in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1852ms
+   ≡ƒÆ¼ Answer: Your ROAS in the last 30 days is 19.51x.
+   ≡ƒôè Tokens Used: 336
+
+2. Question: "What is my ROAS in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1765ms
+   ≡ƒÆ¼ Answer: The ROAS for the period from 2025-09-22 to 2025-10-23 is 19.51x.
+   ≡ƒôè Tokens Used: 349
+
+3. Question: "What is my ROAS in last 90 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2601ms
+   ≡ƒÆ¼ Answer: Your ROAS for the period from 2025-09-22 to 2025-10-23 is 19.51x.
+   ≡ƒôè Tokens Used: 349
+
+4. Question: "What is my cost per purchase in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 2662ms
+   ≡ƒÆ¼ Answer: Your cost per purchase in the last 30 days is Γé╣86.76. This is calculated by dividing the total ad spend (Γé╣41,299) by the total number of orders (476).
+   ≡ƒôè Tokens Used: 362
+
+5. Question: "What is my cost per sale in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 3939ms
+   ≡ƒÆ¼ Answer: Your cost per sale in the last 60 days is Γé╣113.03, calculated as the total ad spend (Γé╣41,299) divided by the total number of orders (476).
+   ≡ƒôè Tokens Used: 360
+
+6. Question: "How much I spend on ads in last 30 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 1020ms
+   ≡ƒÆ¼ Answer: You spent Γé╣41,299 on ads in the last 30 days.
+   ≡ƒôè Tokens Used: 336
+
+7. Question: "How much I spend on ads in last 60 days?"
+   Γ£à SUCCESS
+   ΓÅ▒∩╕Å  Response Time: 3810ms
+   ≡ƒÆ¼ Answer: The data provided only covers the period from 2025-09-22 to 2025-10-23, so I can't provide the ad spend for the last 60 days.
+   ≡ƒôè Tokens Used: 360
+
+8. Question: "What is my CTR in last 30 days?"
