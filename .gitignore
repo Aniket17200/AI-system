@@ -1,5 +1,20 @@
 node_modules/
 .env
+.env.local
+.env.production
 logs/
 *.log
 .DS_Store
+
+# Test files (keep in repo but don't track changes)
+# test-*.js
+# check-*.js
+# sync-*.js
+# add-*.js
+# verify-*.js
+# compare-*.js
+# migrate-*.js
+# optimize-*.js
+
+# Documentation (keep these)
+# *.md

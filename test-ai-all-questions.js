@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'http://localhost:6000/api';
 const USER_ID = '68c812b0afc4892c1f8128e3'; // Tanesh user
 
 const questions = {
@@ -89,7 +89,7 @@ async function runAllTests() {
 
   // Check if server is running
   try {
-    await axios.get('http://localhost:5000/');
+    await axios.get('http://localhost:6000/');
   } catch (error) {
     console.error('❌ Server is not running!');
     console.error('Please start: npm run dev\n');
