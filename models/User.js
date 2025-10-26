@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
   email: { type: String, required: true, unique: true },
-  shopifyStore: { type: String, required: true },
-  shopifyAccessToken: { type: String, required: true },
+  password: String,
+  googleAuth: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: false },
+  shopifyStore: String,
+  shopifyAccessToken: String,
   metaAccessToken: String,
   metaAdAccountId: String,
   shiprocketEmail: String,

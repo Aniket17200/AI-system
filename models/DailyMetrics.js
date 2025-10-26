@@ -46,6 +46,19 @@ const dailyMetricsSchema = new mongoose.Schema({
   deliveryRate: { type: Number, default: 0 },
   rtoRate: { type: Number, default: 0 },
   
+  // Individual Campaigns
+  campaigns: [{
+    campaignId: String,
+    campaignName: String,
+    spend: { type: Number, default: 0 },
+    reach: { type: Number, default: 0 },
+    impressions: { type: Number, default: 0 },
+    clicks: { type: Number, default: 0 },
+    cpc: { type: Number, default: 0 },
+    cpm: { type: Number, default: 0 },
+    ctr: { type: Number, default: 0 }
+  }],
+  
   createdAt: { type: Date, default: Date.now }
 });
 

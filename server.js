@@ -42,7 +42,11 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', routes);
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/onboard', require('./routes/onboardRoutes'));
+app.use('/api/data', require('./routes/dataRoutes'));
 app.use('/api/ai', require('./routes/chatRoutes'));
+app.use('/api/chat', require('./routes/chatRoutes')); // AI Chat routes
 
 // Error handler (must be last)
 app.use(errorHandler);

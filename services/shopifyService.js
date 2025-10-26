@@ -9,19 +9,45 @@ class ShopifyService {
 
   async getOrders(startDate, endDate) {
     try {
-      const response = await axios.get(`${this.baseUrl}/orders.json`, {
-        headers: {
-          'X-Shopify-Access-Token': this.accessToken,
-          'Content-Type': 'application/json'
-        },
-        params: {
-          status: 'any',
-          created_at_min: startDate.toISOString(),
-          created_at_max: endDate.toISOString(),
-          limit: 250
+      let allOrders = [];
+      let url = `${this.baseUrl}/orders.json`;
+      let params = {
+        status: 'any',
+        created_at_min: startDate.toISOString(),
+        created_at_max: endDate.toISOString(),
+        limit: 250
+      };
+
+      // Handle pagination
+      while (url) {
+        const response = await axios.get(url, {
+          headers: {
+            'X-Shopify-Access-Token': this.accessToken,
+            'Content-Type': 'application/json'
+          },
+          params: url === `${this.baseUrl}/orders.json` ? params : undefined
+        });
+
+        const orders = response.data.orders || [];
+        allOrders = allOrders.concat(orders);
+
+        // Check for next page in Link header
+        const linkHeader = response.headers['link'];
+        if (linkHeader && linkHeader.includes('rel="next"')) {
+          const nextMatch = linkHeader.match(/<([^>]+)>;\s*rel="next"/);
+          if (nextMatch) {
+            url = nextMatch[1];
+            params = undefined; // Don't send params for paginated requests
+          } else {
+            url = null;
+          }
+        } else {
+          url = null;
         }
-      });
-      return response.data.orders || [];
+      }
+
+      console.log(`Fetched ${allOrders.length} orders from Shopify`);
+      return allOrders;
     } catch (error) {
       console.error('Shopify API Error:', error.response?.data || error.message);
       throw error;

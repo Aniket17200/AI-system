@@ -103,7 +103,7 @@ class ProfitCalculations {
     return shipments.reduce((sum, shipment) => {
       const freight = parseFloat(shipment.charges?.freight_charges || 0);
       const cod = parseFloat(shipment.charges?.cod_charges || 0);
-      const rto = parseFloat(shipment.charges?.rto_charges || 0);
+      const rto = parseFloat(shipment.charges?.charged_weight_amount_rto || 0);
       return sum + freight + cod + rto;
     }, 0);
   }

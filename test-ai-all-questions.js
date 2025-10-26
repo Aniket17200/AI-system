@@ -85,7 +85,8 @@ async function runAllTests() {
   console.log('   AI CHATBOT - COMPREHENSIVE QUESTION TEST');
   console.log('═══════════════════════════════════════════════════════════════\n');
   console.log(`Testing User: ${USER_ID}`);
-  console.log(`API Base: ${API_BASE}\n`);
+  console.log(`API Base: ${API_BASE}`);
+  console.log(`⚠️  NOTE: Running with 3-second delays to avoid rate limits\n`);
 
   // Check if server is running
   try {
@@ -129,8 +130,8 @@ async function runAllTests() {
 
       console.log('');
       
-      // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Longer delay to avoid rate limiting (3 seconds between requests)
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
   }
 

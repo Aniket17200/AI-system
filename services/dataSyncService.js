@@ -23,9 +23,30 @@ class DataSyncService {
       
       logger.info('Fetching Meta Ads data', { userId: user._id });
       let adsData = [];
+      let campaignsData = [];
       if (metaAds) {
         try {
           adsData = await this.retryOperation(() => metaAds.getInsights(startDate, endDate), 'Meta Ads');
+          
+          // Fetch individual campaigns
+          logger.info('Fetching Meta Ads campaigns', { userId: user._id });
+          const campaigns = await this.retryOperation(() => metaAds.getCampaigns(), 'Meta Ads Campaigns');
+          
+          // Fetch insights for each campaign
+          for (const campaign of campaigns) {
+            try {
+              const insights = await metaAds.getCampaignInsights(campaign.id, startDate, endDate);
+              campaignsData.push({
+                campaignId: campaign.id,
+                campaignName: campaign.name,
+                insights: insights
+              });
+            } catch (err) {
+              logger.warn(`Failed to fetch insights for campaign ${campaign.name}`, { error: err.message });
+            }
+          }
+          
+          logger.info(`Fetched ${campaignsData.length} campaigns`, { userId: user._id });
         } catch (error) {
           errors.push(`Meta Ads: ${error.message}`);
           logger.warn('Meta Ads fetch failed, continuing without ad data', { error: error.message });
@@ -54,12 +75,41 @@ class DataSyncService {
       await this.syncProductCosts(user, orders, productCosts);
 
       // Group data by date
-      const dailyData = this.groupByDate(orders, adsData, shipments);
+      const dailyData = this.groupByDate(orders, adsData, shipments, campaignsData);
 
       // Process and save daily metrics
       for (const [date, data] of Object.entries(dailyData)) {
         try {
           const metrics = this.calculateDailyMetrics(data, productCosts);
+          
+          // Check if we have existing shipping data in database
+          const existingMetric = await DailyMetrics.findOne({ 
+            userId: user._id, 
+            date: new Date(date) 
+          });
+          
+          // If new shipping data is 0 or missing, but we have existing shipping data, preserve it
+          if (existingMetric && existingMetric.totalShipments > 0) {
+            if (!metrics.totalShipments || metrics.totalShipments === 0) {
+              logger.info(`Preserving existing shipping data for ${date}`, { 
+                existingShipments: existingMetric.totalShipments 
+              });
+              
+              // Preserve existing shipping data
+              metrics.totalShipments = existingMetric.totalShipments;
+              metrics.delivered = existingMetric.delivered;
+              metrics.inTransit = existingMetric.inTransit;
+              metrics.rto = existingMetric.rto;
+              metrics.ndr = existingMetric.ndr;
+              metrics.deliveryRate = existingMetric.deliveryRate;
+              metrics.rtoRate = existingMetric.rtoRate;
+              metrics.shippingCost = existingMetric.shippingCost;
+              
+              // Recalculate net profit with preserved shipping cost
+              metrics.netProfit = metrics.grossProfit - metrics.adSpend - metrics.shippingCost;
+              metrics.netProfitMargin = metrics.revenue > 0 ? (metrics.netProfit / metrics.revenue) * 100 : 0;
+            }
+          }
           
           await DailyMetrics.findOneAndUpdate(
             { userId: user._id, date: new Date(date) },
@@ -93,7 +143,7 @@ class DataSyncService {
     
     orders.forEach(order => {
       order.line_items?.forEach(item => {
-        if (!existingCosts[item.product_id]) {
+        if (item.product_id && !existingCosts[item.product_id]) {
           newProducts.add(item.product_id);
         }
       });
@@ -104,16 +154,16 @@ class DataSyncService {
       
       for (const productId of newProducts) {
         const item = orders
-          .flatMap(o => o.line_items)
+          .flatMap(o => o.line_items || [])
           .find(i => i.product_id === productId);
 
-        if (item) {
-          const estimatedCost = parseFloat(item.price) * 0.4; // 40% of price as default cost
+        if (item && item.product_id) {
+          const estimatedCost = parseFloat(item.price || 0) * 0.4; // 40% of price as default cost
           
           await ProductCost.findOneAndUpdate(
             { userId: user._id, shopifyProductId: productId.toString() },
             {
-              productName: item.name,
+              productName: item.name || 'Unknown Product',
               cost: estimatedCost,
               updatedAt: new Date()
             },
@@ -127,12 +177,25 @@ class DataSyncService {
   }
 
   calculateDailyMetrics(data, productCosts) {
-    const { orders, ads, shipments } = data;
+    const { orders, ads, shipments, campaigns = [] } = data;
 
     const revenue = ProfitCalculations.calculateRevenue(orders);
     const cogs = ProfitCalculations.calculateCOGS(orders, productCosts);
-    const adSpend = parseFloat(ads?.spend || 0);
-    const shippingCost = ProfitCalculations.calculateShippingCost(shipments);
+    
+    // Calculate adSpend: if we have campaigns, sum their spend; otherwise use account-level spend
+    let adSpend = 0;
+    if (campaigns && campaigns.length > 0) {
+      adSpend = campaigns.reduce((sum, campaign) => sum + parseFloat(campaign.spend || 0), 0);
+    } else {
+      adSpend = parseFloat(ads?.spend || 0);
+    }
+    
+    let shippingCost = ProfitCalculations.calculateShippingCost(shipments);
+    
+    // Handle NaN values
+    if (isNaN(shippingCost) || !isFinite(shippingCost)) {
+      shippingCost = 0;
+    }
     
     const grossProfit = ProfitCalculations.calculateGrossProfit(revenue, cogs);
     const grossProfitMargin = ProfitCalculations.calculateGrossProfitMargin(grossProfit, revenue);
@@ -145,9 +208,18 @@ class DataSyncService {
     const aov = ProfitCalculations.calculateAOV(revenue, totalOrders);
     const cpp = ProfitCalculations.calculateCPP(adSpend, totalOrders);
     
-    const reach = parseInt(ads?.reach || 0);
-    const impressions = parseInt(ads?.impressions || 0);
-    const linkClicks = parseInt(ads?.clicks || 0);
+    // Calculate reach, impressions, clicks: if we have campaigns, sum them; otherwise use account-level
+    let reach, impressions, linkClicks;
+    if (campaigns && campaigns.length > 0) {
+      reach = campaigns.reduce((sum, c) => sum + parseInt(c.reach || 0), 0);
+      impressions = campaigns.reduce((sum, c) => sum + parseInt(c.impressions || 0), 0);
+      linkClicks = campaigns.reduce((sum, c) => sum + parseInt(c.clicks || 0), 0);
+    } else {
+      reach = parseInt(ads?.reach || 0);
+      impressions = parseInt(ads?.impressions || 0);
+      linkClicks = parseInt(ads?.clicks || 0);
+    }
+    
     const cpc = ProfitCalculations.calculateCPC(adSpend, linkClicks);
     const ctr = ProfitCalculations.calculateCTR(linkClicks, impressions);
     const cpm = ProfitCalculations.calculateCPM(adSpend, impressions);
@@ -155,17 +227,39 @@ class DataSyncService {
     const customerMetrics = ProfitCalculations.analyzeCustomers(orders);
     const shippingMetrics = ProfitCalculations.analyzeShipments(shipments);
 
+    // Helper function to ensure valid numbers
+    const safeNumber = (value) => {
+      if (isNaN(value) || !isFinite(value)) return 0;
+      return value;
+    };
+
     return {
-      totalOrders, revenue, cogs, adSpend, shippingCost,
-      grossProfit, grossProfitMargin, netProfit, netProfitMargin,
-      roas, poas, aov, cpp, cpc, ctr, cpm,
-      reach, impressions, linkClicks,
+      totalOrders: safeNumber(totalOrders),
+      revenue: safeNumber(revenue),
+      cogs: safeNumber(cogs),
+      adSpend: safeNumber(adSpend),
+      shippingCost: safeNumber(shippingCost),
+      grossProfit: safeNumber(grossProfit),
+      grossProfitMargin: safeNumber(grossProfitMargin),
+      netProfit: safeNumber(netProfit),
+      netProfitMargin: safeNumber(netProfitMargin),
+      roas: safeNumber(roas),
+      poas: safeNumber(poas),
+      aov: safeNumber(aov),
+      cpp: safeNumber(cpp),
+      cpc: safeNumber(cpc),
+      ctr: safeNumber(ctr),
+      cpm: safeNumber(cpm),
+      reach: safeNumber(reach),
+      impressions: safeNumber(impressions),
+      linkClicks: safeNumber(linkClicks),
       ...customerMetrics,
-      ...shippingMetrics
+      ...shippingMetrics,
+      campaigns: campaigns // Include campaigns array
     };
   }
 
-  groupByDate(orders, adsData, shipments) {
+  groupByDate(orders, adsData, shipments, campaignsData = []) {
     const grouped = {};
 
     orders.forEach(order => {
@@ -186,7 +280,7 @@ class DataSyncService {
           }
         }
         
-        if (!grouped[dateStr]) grouped[dateStr] = { orders: [], ads: null, shipments: [] };
+        if (!grouped[dateStr]) grouped[dateStr] = { orders: [], ads: null, shipments: [], campaigns: [] };
         grouped[dateStr].orders.push(order);
       } catch (error) {
         logger.error(`Error parsing order date: ${order.created_at}`, { error: error.message });
@@ -195,20 +289,51 @@ class DataSyncService {
 
     adsData.forEach(ad => {
       const date = ad.date_start;
-      if (!grouped[date]) grouped[date] = { orders: [], ads: null, shipments: [] };
+      if (!grouped[date]) grouped[date] = { orders: [], ads: null, shipments: [], campaigns: [] };
       grouped[date].ads = ad;
+    });
+
+    // Group campaigns by date
+    campaignsData.forEach(campaign => {
+      campaign.insights.forEach(insight => {
+        const date = insight.date_start;
+        if (!grouped[date]) grouped[date] = { orders: [], ads: null, shipments: [], campaigns: [] };
+        
+        grouped[date].campaigns.push({
+          campaignId: campaign.campaignId,
+          campaignName: campaign.campaignName,
+          spend: parseFloat(insight.spend || 0),
+          reach: parseInt(insight.reach || 0),
+          impressions: parseInt(insight.impressions || 0),
+          clicks: parseInt(insight.clicks || 0),
+          cpc: parseFloat(insight.cpc || 0),
+          cpm: parseFloat(insight.cpm || 0),
+          ctr: parseFloat(insight.ctr || 0)
+        });
+      });
     });
 
     shipments.forEach(shipment => {
       try {
         let dateStr;
         if (shipment.created_at) {
-          if (shipment.created_at.includes('T')) {
-            dateStr = shipment.created_at.split('T')[0];
-          } else {
-            const parsedDate = new Date(shipment.created_at);
-            if (!isNaN(parsedDate.getTime())) {
-              dateStr = parsedDate.toISOString().split('T')[0];
+          // Shiprocket format: "26th Oct 2024 08:11 AM"
+          // Parse this format to get the date
+          const dateMatch = shipment.created_at.match(/(\d+)(st|nd|rd|th)\s+(\w+)\s+(\d{4})/);
+          if (dateMatch) {
+            const day = dateMatch[1].padStart(2, '0');
+            const monthStr = dateMatch[3];
+            const year = dateMatch[4];
+            
+            const months = {
+              'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04',
+              'May': '05', 'Jun': '06', 'Jul': '07', 'Aug': '08',
+              'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
+            };
+            
+            const month = months[monthStr];
+            if (month) {
+              dateStr = `${year}-${month}-${day}`;
             }
           }
         } else if (shipment.pickup_scheduled_date) {
@@ -216,7 +341,7 @@ class DataSyncService {
         }
         
         if (dateStr) {
-          if (!grouped[dateStr]) grouped[dateStr] = { orders: [], ads: null, shipments: [] };
+          if (!grouped[dateStr]) grouped[dateStr] = { orders: [], ads: null, shipments: [], campaigns: [] };
           grouped[dateStr].shipments.push(shipment);
         }
       } catch (error) {
